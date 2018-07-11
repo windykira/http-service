@@ -7,8 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
-//@MapperScan("com.haoze.hishttpservice.dao")
-@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@MapperScan("com.haoze.hishttpservice.dao")
+//@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class HisHttpserviceApplication {
 
 	public static void main(String[] args) {

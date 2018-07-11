@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,13 +16,17 @@ import java.util.Map;
 @RequestMapping("/his/http")
 public class HisHttpController {
 
-    /*@Autowired
-    HisHttpDao hisHttpDao;*/
+    @Autowired
+    HisHttpDao hisHttpDao;
 
     @GetMapping("/listPatientEmrs")
     @ResponseBody
     List<PatientEmrModel> listPatientEmrs(HttpServletRequest request) {
 
+        Map<String,Object> map = new HashMap();
+        map.put("as_patientId", "966188");
+        map.put("al_visitid", 1);
+        List<Map> emrList = hisHttpDao.listPatientInspects(map);
         System.out.println(request.getParameter("INDATE") + "********");
         List<PatientEmrModel> list = new ArrayList();
         PatientEmrModel patientEmrModel = new PatientEmrModel();

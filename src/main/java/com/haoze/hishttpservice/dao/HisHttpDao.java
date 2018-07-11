@@ -15,10 +15,17 @@ import java.util.Map;
  */
 public interface HisHttpDao {
 
-    @Select("call pro_list()")
-    @Results({
-            @Result(property = "patientId",  column = "PATIENTID"),
-            @Result(property = "patientName", column = "PATIENTNAME")
-    })
+    /**
+     * 查询病人列表
+     * @param paramsMap
+     * @return
+     */
     List<PatientEmrModel> listPatientEmrs(Map<String,Object> paramsMap);
+
+    /**
+     * 查询病人检查列表
+     * @param paramsMap
+     * @return
+     */
+    List<Map> listPatientInspects(Map<String,Object> paramsMap);
 }

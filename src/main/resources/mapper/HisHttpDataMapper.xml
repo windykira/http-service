@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.haoze.hishttpservice.dao.HisHttpDao">
+
+
+    <resultMap type="com.haoze.hishttpservice.model.PatientInspectModel" id="cursorMap">
+        <result column ="EXAM_NO" property="examNo" />
+    </resultMap>
+
+    <select id="listPatientInspects" parameterType="java.util.Map" statementType="CALLABLE">
+        <![CDATA[
+
+        call PROC_EMR_GET_EXAMRESULT(
+        #{as_patientId,mode=IN,jdbcType=VARCHAR},#{al_visitid,mode=IN,jdbcType=INTEGER},#{as_sort,mode=IN,jdbcType=VARCHAR},
+        #{al_curPage,mode=IN,jdbcType=INTEGER},#{al_pageSize,mode=IN,jdbcType=INTEGER},
+        #{al_totalRecords,mode=OUT,jdbcType=INTEGER},#{ret_list, mode=OUT, jdbcType=CURSOR, resultMap=cursorMap},
+        #{error_id,mode=OUT,jdbcType=INTEGER},#{error_msg, mode=OUT, jdbcType=VARCHAR})
+
+        ]]>
+    </select>
+
+</mapper>
